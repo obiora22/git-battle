@@ -1,31 +1,67 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-import {Router,Route, hashHistory, Link} from 'react-router';
-import About from './About';
-import Contact from './Contact';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Main from './components/Main';
+import Home from './components/Home';
+import Contact from './components/Contact';
+import Routes from './config/routes';
 
-class Home extends React.Component {
-  render() {
-    console.log(this.props)
-    return (
-      <div>
-       <h1>Home Page</h1>
-       <ul role="nav">
-         <li><Link to="/about" activeStyle={{color: 'red'}}>About</Link></li>
-         <li><Link to="/contact" activeStyle={{color: 'red'}}>Contact</Link></li>
-       </ul>
-       {this.props.children}
-      </div>
-      );
-  }   
+const MOCK_DATA = {
+  profileLink: 'https://github.com/',
+  userName: 'obiora22',
+  imageUrl:"https://avatars2.githubusercontent.com/u/8620832?v=3&amp;s=460"
 }
 
-ReactDOM.render((
-  <Router history={hashHistory}>
-    <Route path="/" component={Home}>
-      <Route path="/about" component={About}/>
-      <Route path="/contact" component={Contact}/>
-    </Route>
-  </Router>),
+var Link = React.createClass({
+  changeUrl() {
+    window.location.replace(this.props.href);
+  },
+  render() {
+    return (
+      <span style={{color: 'red', cursor: 'pointer'}} onClick={this.changeUrl}>
+        {this.props.children}
+      </span>
+    );
+
+  }
+})
+var GetProfileImage = React.createClass({
+  render() {
+    return <img  src={this.props.imageUrl} />;
+  }  
+})
+
+var GetProfileLink = React.createClass({
+  render() {
+    return (
+      <div>
+        <Link href={this.props.profileLink + this.props.userName}>{this.props.userName}</Link>
+      </div>
+    );
+  }
+})
+
+var Avatar = React.createClass({
+  render() {
+    return (
+      <div className="bio" >
+        <GetProfileImage imageUrl={this.props.imageUrl}/>
+        <GetProfileLink profileLink={this.props.profileLink} userName={this.props.userName}/>
+      </div>
+    );
+  }
+})
+
+// ReactDOM.render(
+//   <Avatar imageUrl={MOCK_DATA.imageUrl} profileLink={MOCK_DATA.profileLink} userName={MOCK_DATA.userName}/>,
+//   document.getElementById('app')
+// );
+
+// ReactDOM.render(
+//   <Main />,
+//   document.getElementById('app')
+// )
+
+ReactDOM.render(
+  Routes,
   document.getElementById('app')
 );
