@@ -1,4 +1,5 @@
 import React from 'react';
+import Prompt from '../components/Prompt';
 import Styles from '../styles/index';
 
 var PromptContainer = React.createClass({
@@ -39,20 +40,13 @@ var PromptContainer = React.createClass({
 
   render() {
     console.log(this)
+    console.log(this.state)
     return (
-        <div className="prompt jumbotron text-center" style={Styles.transparentBG}>
-          <h3 className="text-center">{this.props.route.header}</h3>
-          
-            <form onSubmit={this.onSubmitUser}>
-              <div className="form-group">
-                <input type="text" className="form-control" id="textSearch" placeholder="Github Username" onChange={this.onUpdateUser}/>
-              </div>
-              <div className="form-group">
-                <button type="submit" className="btn btn-success">Continue</button>
-              </div>
-            </form>
-            <p>{this.state.username}</p>
-        </div>
+       <Prompt 
+        route={this.props.route} 
+        username={this.state.username} 
+        onSubmitUser={this.onSubmitUser} 
+        onUpdateUser={this.onUpdateUser}/>
     );
   }
 });
