@@ -44,3 +44,7 @@ body {
 #player-nav li a{
   text-decoration: none;
 }
+
+.button-wrapper {
+  margin-top: 20px;
+}

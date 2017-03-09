@@ -6,7 +6,7 @@ var Home = require('../components/Home').default;
 var Contact = require('../components/Contact').default;
 import PromptContainer from '../containers/PromptContainer';
 import BattleContainer from '../containers/BattleContainer';
-
+import ResultsContainer from '../containers/ResultsContainer';
 var routes = (
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
@@ -16,6 +16,7 @@ var routes = (
       <Route path="/home" component={Home}/>
       <Route path="/contact" component={Contact}/>
       <Route path="/battle" component={BattleContainer}/>
+      <Route path="/results" component={ResultsContainer}/>
     </Route>
   </Router>
 );
