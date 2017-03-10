@@ -18,7 +18,8 @@ var PromptContainer = React.createClass({
     })
   },
   clearInput() {
-    ReactDOM.findDOMNode(this.refs.textInput).value = "";
+    // ReactDOM.findDOMNode(this.refs.textInput).value = "";
+   
   },
   onSubmitUser(e) {
     e.preventDefault();

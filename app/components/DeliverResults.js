@@ -8,7 +8,7 @@ function DeliverResults(props) {
         return (
           <div className="col-md-6" key={index}>
             <ShowWinner playerScore={props.scores[index]} scores={props.scores}/>
-            <h3>Player {index + 1}</h3>
+            <h3>Player {index + 1}: {props.scores[index]}</h3>
             <UserDetails info={playerObject}/>
           </div>
         );

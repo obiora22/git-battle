@@ -1,15 +1,22 @@
 import React from 'react';
-import {Link} from 'react-router';
+
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import AppCSS from '../app.css';
+import Navigation from './Navigation';
 
 var Main = React.createClass({
   render() {
     return (
       <div className="main container jumbotron">
-        <ul id="main-nav"role="nav">
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
-        {this.props.children}
+        <Navigation />
+        <ReactCSSTransitionGroup
+          transitionName="appear"
+          transitionEnterTimeout={900}
+          transitionLeaveTimeout={900}
+        >
+         
+          {React.cloneElement(this.props.children,{key: this.props.location.pathname})}
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

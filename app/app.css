@@ -1,0 +1,31 @@
+/*.appear-enter {
+  transition-property: opacity;
+  transition-duration: 1.3s;
+  transition-timing-function: ease-in;
+}
+
+.appear-leave {
+  opacity: 0;
+}
+
+.appear-enter .appear-enter-active {
+  opacity: 1;
+}*/
+
+.appear-enter {
+  opacity: 0.01;
+}
+
+.appear-enter.appear-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.appear-leave {
+  opacity: 1;
+}
+
+.appear-leave.appear-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

@@ -8,8 +8,7 @@ var Prompt = React.createClass({
     onUpdateUser: React.PropTypes.func.isRequired
   },
   componentDidMount() {
-    console.log('Prompt',this.refs);
-    this.refs.textInput = '';
+    this.textInput.focus();
   },
   render() {
     return (
@@ -18,12 +17,12 @@ var Prompt = React.createClass({
           
             <form onSubmit={this.props.onSubmitUser}>
               <div className="form-group">
-                <input type="text" className="form-control" ref="textInput"
+                <input type="text" className="form-control" ref={(input) => { this.textInput = input}}
                 id="textSearch" placeholder="Github Username" onChange={this.props.onUpdateUser}
                 />
               </div>
               <div className="form-group">
-                <button type="submit" className="btn btn-success">Continue</button>
+                <button type="submit" className="btn btn-success" onClick={this.props.clearInput}>Continue</button>
               </div>
             </form>
             <p>{this.props.username}</p>
