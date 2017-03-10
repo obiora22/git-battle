@@ -7,6 +7,10 @@ var Prompt = React.createClass({
     onSubmitUser: React.PropTypes.func.isRequired,
     onUpdateUser: React.PropTypes.func.isRequired
   },
+  componentDidMount() {
+    console.log('Prompt',this.refs);
+    this.refs.textInput = '';
+  },
   render() {
     return (
       <div className="prompt jumbotron text-center" style={Styles.transparentBG}>
@@ -14,7 +18,9 @@ var Prompt = React.createClass({
           
             <form onSubmit={this.props.onSubmitUser}>
               <div className="form-group">
-                <input type="text" className="form-control" id="textSearch" placeholder="Github Username" onChange={this.props.onUpdateUser}/>
+                <input type="text" className="form-control" ref="textInput"
+                id="textSearch" placeholder="Github Username" onChange={this.props.onUpdateUser}
+                />
               </div>
               <div className="form-group">
                 <button type="submit" className="btn btn-success">Continue</button>
